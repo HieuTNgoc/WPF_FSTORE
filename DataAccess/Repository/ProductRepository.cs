@@ -9,16 +9,26 @@ namespace DataAccess.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        private Asm1PRNContext _Context;
+        private ProductDAO _ProductDAO;
 
         public ProductRepository()
         {
-            _Context = DataProvider.Ins.DB;
+            _ProductDAO = new ProductDAO();
+        }
+
+        public void Create(Product product)
+        {
+            _ProductDAO.addNew(product);
+        }
+
+        public int ProductCount(string productName)
+        {
+            return _ProductDAO.countProduct(productName);
         }
 
         public List<Product> ReadAll()
         {
-            return _Context.Products.ToList();
+            return _ProductDAO.getAll();
         }
 
         //public int Create(Product Product)

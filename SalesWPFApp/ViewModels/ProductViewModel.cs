@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using SalesWPFApp.ViewModels;
 using DataAccess.Repository;
+using System.Windows;
 
 namespace SalesWPFApp.ViewModels
 {
@@ -53,14 +54,36 @@ namespace SalesWPFApp.ViewModels
         private int _UnitStock;
         public int UnitStock { get => _UnitStock; set { _UnitStock = value; OnPropertyChanged(); } }
 
+
+        public ICommand AddCommand { get; set; }
+
         public ProductViewModel()
         {
             LoadProductList();
+
+            AddCommand = new RelayCommand<object>((p) => {
+                if (string.IsNullOrEmpty(ProductName) || CategoryId == null || string.IsNullOrEmpty(Weight) || UnitPrice == null || UnitStock == null)
+                {
+                    //MessageBox.Show("Please complete all field data!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                var productCount = _ProductRepository.ProductCount(ProductName);
+                if (productCount > 0)
+                {
+                    //MessageBox.Show("Product already exists, please try again!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                _ProductRepository.Create(new Product { ProductName = ProductName, CategoryId = CategoryId, Weight=Weight,UnitPrice = UnitPrice, UnitStock = UnitStock});
+                MessageBox.Show($"Product: {ProductName} is created successfully", "Add Product");
+                LoadProductList();
+            });
         }
 
         void LoadProductList()
         {
-           _ProductList = _ProductRepository.ReadAll();
+           ProductList = _ProductRepository.ReadAll();
         }
 
     }

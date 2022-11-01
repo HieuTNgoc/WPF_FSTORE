@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using SalesWPFApp.ViewModels;
 using DataAccess.Repository;
+using System.Windows;
 
 namespace SalesWPFApp.ViewModels
 {
@@ -49,19 +50,35 @@ namespace SalesWPFApp.ViewModels
         private string _Password;
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
 
-        public ICommand searchCommand { get; set; }
-        public ICommand createCommand { get; set; }
-        public ICommand updateCommand { get; set; }
-        public ICommand deleteCommand { get; set; }
+        public ICommand AddCommand { get; set; }
        
         public MemberViewModel()
         {
             LoadMemberList();
+
+            AddCommand = new RelayCommand<object>((p) => {
+                if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(CompanyName) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Country) || string.IsNullOrEmpty(Password))
+                {
+                    //MessageBox.Show("Please complete all field data!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                var accCount = _MemberRepository.EmailCount(Email);
+                if (accCount != 0)
+                {
+                    //MessageBox.Show("Email already exists, please try again!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                _MemberRepository.Create(new Member {Email = Email, CompanyName = CompanyName,City = City,Country = Country,Password = Password});
+                MessageBox.Show($"Account: {Email} is created successfully", "Add Member");
+                LoadMemberList();
+            });
         }
        
         void LoadMemberList()
         {
-            _MemberList = _MemberRepository.ReadAll();
+            MemberList = _MemberRepository.ReadAll();
         }
         //public void loadCommand()
         //{

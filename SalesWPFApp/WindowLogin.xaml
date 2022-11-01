@@ -17,7 +17,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Login" Height="300" Width="500">
+        Title="Login" Height="550" Width="500">
     
     
     

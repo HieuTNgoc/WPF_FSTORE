@@ -18,7 +18,7 @@
          FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Sale Home App" Height="550" Width="800">
+        Title="Sale Home App" Height="550" Width="850">
 
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">

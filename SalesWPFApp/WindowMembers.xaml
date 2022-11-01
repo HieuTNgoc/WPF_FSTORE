@@ -20,8 +20,8 @@
             <materialDesign:Card Grid.Row="0" Margin="5" >
                 <Grid >
                     <Button HorizontalAlignment="Left"  Command="{Binding AddCommand}"  Background="YellowGreen" Content="Add" Margin="5" Width="100"></Button>
-                    <Button HorizontalAlignment="Center" Command="{Binding EditCommand}" Background="Goldenrod"  Content="Edit" Margin="5" Width="100"></Button>
-                    <Button HorizontalAlignment="Right" Command="{Binding DeleteCommand}" Background="PaleVioletRed" Content="Delete" Margin="5" Width="100"></Button>
+                    <Button HorizontalAlignment="Center" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=memberWindow}" Background="Goldenrod"  Content="Edit" Margin="5" Width="100"></Button>
+                    <Button HorizontalAlignment="Right" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=memberWindow}"  Background="PaleVioletRed" Content="Delete" Margin="5" Width="100"></Button>
                 </Grid>
             </materialDesign:Card>
 
@@ -46,15 +46,15 @@
             <Label Content="Country" Margin="0,180,0,-224" />
             <Label Content="Password" Margin="0,230,0,-280"  />
             <TextBox Name="email" Height="33" Width="195"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,25,0,0"
-                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="companyName" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,75,0,0" 
-                     Text="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="city" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,125,0,0"
-                     Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding City, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="country" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,175,0,0"
-                     Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding Country, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBox Name="password" Height="33" Width="195"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,225,0,0"
-                     Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </Grid>
     </Grid>
 </Window>

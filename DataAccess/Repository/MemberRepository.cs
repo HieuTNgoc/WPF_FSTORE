@@ -7,24 +7,35 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    public class MemberRepository :IMemberRepository
+    public class MemberRepository : IMemberRepository
     {
         private MemberDAO _MemberDAO;
-       
+
 
 
         public MemberRepository()
         {
             _MemberDAO = new MemberDAO();
         }
+
+
         public int Login(string email, string password)
         {
-            return _MemberDAO.countAcc(email, password);   
+            return _MemberDAO.countAcc(email, password);
         }
 
         public List<Member> ReadAll()
         {
             return _MemberDAO.getAll();
+        }
+        public int EmailCount(string email)
+        {
+            return _MemberDAO.countEmail(email);
+        }
+
+        public void Create(Member member)
+        {
+            _MemberDAO.addNew(member);
         }
 
         //public int Create(Member member)
@@ -49,7 +60,7 @@ namespace DataAccess.Repository
         //    throw new NotImplementedException();
         //}
 
-       
+
 
         //public int Update(int id, Member member)
         //{

@@ -10,16 +10,34 @@ namespace DataAccess
 {
     public class ProductDAO
     {
-        private IProductRepository ProductRepository;
+        private Asm1PRNContext _Context;
 
         public ProductDAO()
         {
-            ProductRepository = new ProductRepository();
+            _Context = DataProvider.Ins.DB;
         }
 
         public List<Product> getAll()
         {
-            return ProductRepository.ReadAll();
+            return _Context.Products.ToList();
+        }
+
+        public int countProduct(string productName)
+        {
+            return _Context.Products.Where(x => x.ProductName == productName).Count();
+        }
+
+        public void addNew(Product product)
+        {
+            try
+            {
+                _Context.Products.Add(product);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         //public List<Product> searchProductByID(int id)

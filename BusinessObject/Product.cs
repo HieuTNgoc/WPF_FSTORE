@@ -10,9 +10,8 @@ namespace BusinessObject
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public Product(int productId, int categoryId, string? productName, string? weight, decimal unitPrice, int unitStock)
+        public Product(int categoryId, string? productName, string? weight, decimal unitPrice, int unitStock)
         {
-            ProductId = productId;
             CategoryId = categoryId;
             ProductName = productName;
             Weight = weight;
