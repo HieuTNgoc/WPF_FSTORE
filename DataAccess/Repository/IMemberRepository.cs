@@ -12,11 +12,11 @@ namespace DataAccess.Repository
         public int Login(string email, string password);
         public List<Member> ReadAll();
         public int EmailCount(string email);
+        
+        public Member GetById(int memberId);
         public void Create(Member member);
-        //public Member GetMemberById(int memberId);
-        //public Member GetMemberByEmail(int email);
-        //public int Update(int id, Member member);
-        //public int Delete(Member member);
+        public void Update(int memberId, Member member);
+
 
     }
 }

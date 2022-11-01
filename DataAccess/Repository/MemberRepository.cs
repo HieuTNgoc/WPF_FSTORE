@@ -38,6 +38,16 @@ namespace DataAccess.Repository
             _MemberDAO.addNew(member);
         }
 
+        public Member GetById(int memberId)
+        {
+            return _MemberDAO.getById(memberId);
+        }
+
+        public void Update(int memberId, Member member)
+        {
+            _MemberDAO.update(memberId, member);
+        }
+
         //public int Create(Member member)
         //{
         //    _context.Add(member);

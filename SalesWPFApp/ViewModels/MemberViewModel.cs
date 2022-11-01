@@ -51,11 +51,14 @@ namespace SalesWPFApp.ViewModels
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
 
         public ICommand AddCommand { get; set; }
-       
+        public ICommand EditCommand { get; set; }
+
+
         public MemberViewModel()
         {
             LoadMemberList();
 
+            // Add new item
             AddCommand = new RelayCommand<object>((p) => {
                 if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(CompanyName) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Country) || string.IsNullOrEmpty(Password))
                 {
@@ -72,6 +75,26 @@ namespace SalesWPFApp.ViewModels
             }, (p) => {
                 _MemberRepository.Create(new Member {Email = Email, CompanyName = CompanyName,City = City,Country = Country,Password = Password});
                 MessageBox.Show($"Account: {Email} is created successfully", "Add Member");
+                LoadMemberList();
+            });
+
+            // Edit item
+            EditCommand = new RelayCommand<object>((p) => {
+                if (SelectedMember==null || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(CompanyName) || string.IsNullOrEmpty(City) || string.IsNullOrEmpty(Country) || string.IsNullOrEmpty(Password))
+                {
+                    //MessageBox.Show("Please complete all field data!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                var accCount = _MemberRepository.EmailCount(Email);
+                if (accCount != 0)
+                {
+                    //MessageBox.Show("Email already exists, please try again!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                _MemberRepository.Update(SelectedMember.MemberId, new Member { Email = Email, CompanyName = CompanyName, City = City, Country = Country, Password = Password });
+                MessageBox.Show($"Account: {Email} is Updated successfully", "Update Member");
                 LoadMemberList();
             });
         }

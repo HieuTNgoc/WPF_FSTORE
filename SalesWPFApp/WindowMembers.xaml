@@ -20,8 +20,8 @@
             <materialDesign:Card Grid.Row="0" Margin="5" >
                 <Grid >
                     <Button HorizontalAlignment="Left"  Command="{Binding AddCommand}"  Background="YellowGreen" Content="Add" Margin="5" Width="100"></Button>
-                    <Button HorizontalAlignment="Center" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=memberWindow}" Background="Goldenrod"  Content="Edit" Margin="5" Width="100"></Button>
-                    <Button HorizontalAlignment="Right" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=memberWindow}"  Background="PaleVioletRed" Content="Delete" Margin="5" Width="100"></Button>
+                    <Button HorizontalAlignment="Center" Command="{Binding EditCommand}"  Background="Goldenrod"  Content="Edit" Margin="5" Width="100"></Button>
+                    <Button HorizontalAlignment="Right" Command="{Binding DeleteCommand}" Background="PaleVioletRed" Content="Delete" Margin="5" Width="100"></Button>
                 </Grid>
             </materialDesign:Card>
 

@@ -39,11 +39,37 @@ namespace DataAccess
 
         }
 
+        public Member getById(int memberId)
+        {
+            return _Context.Members.Where(x => x.MemberId == memberId).SingleOrDefault();
+        }
+
         public void addNew(Member member)
         {
             try
             {
                 _Context.Members.Add(member);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void update(int memberId, Member member)
+        {
+            try
+            {
+                var mem = _Context.Members.Where(x=>x.MemberId == memberId).SingleOrDefault();
+                if (mem == null)
+                {
+                    throw new Exception("Can not read selected Member!");
+                }
+                mem.CompanyName = member.CompanyName;
+                mem.City = member.City;
+                mem.Country = member.Country;
+                mem.Password = member.Password;
+                mem.Email = member.Email;
                 _Context.SaveChanges();
             }
             catch (Exception ex)
@@ -58,10 +84,6 @@ namespace DataAccess
         //public int delete(Member Member)
         //{
         //    return MemberRepository.Delete(Member);
-        //}
-        //public int update(int id, Member Member)
-        //{
-        //    return MemberRepository.Update(id, Member);
         //}
         //public int add(Member Member)
         //{
