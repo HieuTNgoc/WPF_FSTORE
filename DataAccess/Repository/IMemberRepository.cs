@@ -16,7 +16,7 @@ namespace DataAccess.Repository
         public Member GetById(int memberId);
         public void Create(Member member);
         public void Update(int memberId, Member member);
-
+        public void Remove(int memberId);
 
     }
 }

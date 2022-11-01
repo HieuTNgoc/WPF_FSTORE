@@ -36,36 +36,9 @@ namespace DataAccess.Repository
         {
             _ProductDAO.update(productId, product);
         }
-
-        //public int Create(Product Product)
-        //{
-        //    _context.Add(Product);
-        //    return _context.SaveChanges();
-        //}
-
-        //public int Delete(Product Product)
-        //{
-        //    _context.Remove(Product);
-        //    return _context.SaveChanges();
-        //}
-
-
-
-        //public int Update(int id, Product Product)
-        //{
-        //    Product.ProductId = id;
-        //    Product oldProduct = _context.Products.Where(o => o.ProductId == id).FirstOrDefault();
-        //    oldProduct.ProductId = id;
-        //    oldProduct.CategoryId = Product.CategoryId;
-        //    oldProduct.ProductName = Product.ProductName;
-        //    oldProduct.Weight = Product.Weight;
-        //    oldProduct.UnitPrice = Product.UnitPrice;
-        //    oldProduct.UnitStock = Product.UnitStock;
-        //    _context.Update(oldProduct);
-        //    return _context.SaveChanges();
-        //}
-
-
-
+        public void Remove(int productId)
+        {
+           _ProductDAO.delete(productId);
+        }
     }
 }

@@ -57,6 +57,8 @@ namespace SalesWPFApp.ViewModels
 
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+
 
 
         public ProductViewModel()
@@ -96,6 +98,19 @@ namespace SalesWPFApp.ViewModels
             }, (p) => {
                 _ProductRepository.Update(SelectedProduct.ProductId, (new Product { ProductName = ProductName, CategoryId = CategoryId, Weight = Weight, UnitPrice = UnitPrice, UnitStock = UnitStock }));
                 MessageBox.Show($"Product: {ProductName} is Updated successfully", "Update Product");
+                LoadProductList();
+            });
+
+            // Remove Item
+            DeleteCommand = new RelayCommand<object>((p) => {
+                if (SelectedProduct == null)
+                {
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                _ProductRepository.Remove(SelectedProduct.ProductId);
+                MessageBox.Show($"Account: {ProductName} is Removed successfully", "Remove Member");
                 LoadProductList();
             });
         }

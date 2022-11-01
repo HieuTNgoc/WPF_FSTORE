@@ -52,6 +52,8 @@ namespace SalesWPFApp.ViewModels
 
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+
 
 
         public MemberViewModel()
@@ -98,6 +100,20 @@ namespace SalesWPFApp.ViewModels
                 MessageBox.Show($"Account: {Email} is Updated successfully", "Update Member");
                 LoadMemberList();
             });
+
+            // Remove item
+            DeleteCommand = new RelayCommand<object>((p) => {
+                if (SelectedMember == null)
+                {
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                _MemberRepository.Remove(SelectedMember.MemberId);
+                MessageBox.Show($"Account: {Email} is Removed successfully", "Remove Member");
+                LoadMemberList();
+            });
+
         }
        
         void LoadMemberList()

@@ -48,46 +48,10 @@ namespace DataAccess.Repository
             _MemberDAO.update(memberId, member);
         }
 
-        //public int Create(Member member)
-        //{
-        //    _context.Add(member);
-        //    return _context.SaveChanges();
-        //}
-
-        //public int Delete(Member member)
-        //{
-        //    _context.Remove(member);
-        //    return _context.SaveChanges();
-        //}
-
-        //public Member GetMemberByEmail(int email)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Member GetMemberById(int memberId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-
-
-        //public int Update(int id, Member member)
-        //{
-
-        //    member.MemberId = id;
-        //    Member oldMember = _context.Members.Where(o => o.MemberId == id).FirstOrDefault();
-        //    oldMember.MemberId = id;
-        //    oldMember.Email = member.Email;
-        //    oldMember.CompanyName = member.CompanyName;
-        //    oldMember.City = member.City;
-        //    oldMember.Country = member.Country;
-        //    oldMember.Password = member.Password;
-        //    _context.Update(oldMember);
-        //    return _context.SaveChanges();
-        //}
-
-
+        public void Remove(int memberId)
+        {
+            _MemberDAO.delete(memberId);
+        }
 
     }
 }

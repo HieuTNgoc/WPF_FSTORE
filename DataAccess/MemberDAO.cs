@@ -77,18 +77,25 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        //public Member viewInfo(int id)
-        //{
-        //    return null;
-        //}
-        //public int delete(Member Member)
-        //{
-        //    return MemberRepository.Delete(Member);
-        //}
-        //public int add(Member Member)
-        //{
-        //    return MemberRepository.Create(Member);
-        //}
+
+        public void delete(int memberId)
+        {
+            try
+            {
+                var mem = _Context.Members.Where(x => x.MemberId == memberId).SingleOrDefault();
+                if (mem == null)
+                {
+                    throw new Exception("Can not read selected Member!");
+                }
+                _Context.Members.Remove(mem);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
     }
 }

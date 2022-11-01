@@ -61,35 +61,22 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-        //public List<Product> searchProductByID(int id)
-        //{
-        //    return null;
-        //}
-        //public List<Product> searchProductByName(string id)
-        //{
-        //    return null;
-        //}
-        //public List<Product> searchProductByUnitPrice(decimal price)
-        //{
-        //    return null;
-        //}
-        //public List<Product> searchProductByUnitInStock(int UnitInStock)
-        //{
-        //    return null;
-        //}
-
-        //public int delete(Product Product)
-        //{
-        //    return ProductRepository.Delete(Product);
-        //}
-        //public int update(int id, Product Product)
-        //{
-        //    return ProductRepository.Update(id, Product);
-        //}
-
-        //public int add(Product Product)
-        //{
-        //    return ProductRepository.Create(Product);
-        //}
+        public void delete(int productId)
+        {
+            try
+            {
+                var pro = _Context.Products.Where(x => x.ProductId == productId).SingleOrDefault();
+                if (pro == null)
+                {
+                    throw new Exception("Can not read selected Product!");
+                }
+                _Context.Products.Remove(pro);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
