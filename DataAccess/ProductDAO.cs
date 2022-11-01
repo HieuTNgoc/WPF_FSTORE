@@ -40,6 +40,27 @@ namespace DataAccess
             }
         }
 
+        public void update(int productId, Product product)
+        {
+            try
+            {
+                var pro = _Context.Products.Where(x => x.ProductId == productId).SingleOrDefault();
+                if (pro == null)
+                {
+                    throw new Exception("Can not read selected Product!");
+                }
+                pro.ProductName = product.ProductName;
+                pro.CategoryId = product.CategoryId;
+                pro.Weight = product.Weight;
+                pro.UnitStock = product.UnitStock;
+                pro.UnitPrice = product.UnitPrice;
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         //public List<Product> searchProductByID(int id)
         //{
         //    return null;

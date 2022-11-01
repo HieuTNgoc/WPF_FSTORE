@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
+
     public class ProductRepository : IProductRepository
     {
         private ProductDAO _ProductDAO;
@@ -29,6 +30,11 @@ namespace DataAccess.Repository
         public List<Product> ReadAll()
         {
             return _ProductDAO.getAll();
+        }
+
+        public void Update(int productId, Product product)
+        {
+            _ProductDAO.update(productId, product);
         }
 
         //public int Create(Product Product)

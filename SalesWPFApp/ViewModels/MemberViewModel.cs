@@ -86,7 +86,8 @@ namespace SalesWPFApp.ViewModels
                     return false;
                 }
                 var accCount = _MemberRepository.EmailCount(Email);
-                if (accCount != 0)
+                var acc = _MemberRepository.GetById(SelectedMember.MemberId);
+                if (accCount != 0 && Email != acc.Email)
                 {
                     //MessageBox.Show("Email already exists, please try again!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
@@ -103,137 +104,6 @@ namespace SalesWPFApp.ViewModels
         {
             MemberList = _MemberRepository.ReadAll();
         }
-        //public void loadCommand()
-        //{
-        //    searchCommand = new RelayCommand<Object>(p => true, p =>
-        //    {
-
-
-        //    });
-        //    createCommand = new RelayCommand<UIElementCollection>(p => true, p =>
-        //    {
-        //        string email = null;
-        //        string companyName = null;
-        //        string city = null;
-        //        string country = null;
-        //        string password = null;
-        //        Boolean isAllValid = true;
-        //        try
-        //        {
-        //            foreach (var i in p)
-        //            {
-        //                TextBox tb = i as TextBox;
-        //                if (tb != null)
-        //                {
-
-        //                    switch (tb.Name)
-        //                    {
-        //                        case "email":
-        //                            email = tb.Text;
-        //                            break;
-        //                        case "companyName":
-        //                            companyName = tb.Text;
-        //                            break;
-        //                        case "city":
-        //                            city = tb.Text;
-        //                            break;
-        //                        case "country":
-        //                            country = tb.Text;
-        //                            break;
-        //                        case "password":
-        //                            password = tb.Text;
-        //                            break;
-        //                    }
-
-
-        //                }
-
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            isAllValid = false;
-        //        }
-        //        if (isAllValid == true)
-        //        {
-        //            memberDao.add(new Member(email, companyName, city, country, password));
-        //            loadMemberList();
-        //        }
-        //        else
-        //            return;
-        //    });
-        //    updateCommand = new RelayCommand<UIElementCollection>(p => true, p =>
-        //    {
-        //        int MemberId = 0;
-        //        string email = null;
-        //        string companyName = null;
-        //        string city = null;
-        //        string country = null;
-        //        string password = null;
-        //        Boolean isAllValid = true;
-        //        try
-        //        {
-        //            foreach (var i in p)
-        //            {
-        //                TextBox tb = i as TextBox;
-        //                if (tb != null)
-        //                {
-
-        //                    switch (tb.Name)
-        //                    {
-        //                        case "MemberId":
-        //                            MemberId = Int32.Parse(tb.Text);
-        //                            break;
-        //                        case "email":
-        //                            email = tb.Text;
-        //                            break;
-        //                        case "companyName":
-        //                            companyName = tb.Text;
-        //                            break;
-        //                        case "city":
-        //                            city = tb.Text;
-        //                            break;
-        //                        case "country":
-        //                            country = tb.Text;
-        //                            break;
-        //                        case "password":
-        //                            password = tb.Text;
-        //                            break;
-        //                    }
-        //                }
-
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            isAllValid = false;
-        //        }
-        //        if (isAllValid == true)
-        //        {
-        //            memberDao.update(MemberId, new Member(email, companyName, city, country, password));
-        //            loadMemberList();
-        //        }
-        //        else
-        //            return;
-        //    });
-        //    deleteCommand = new RelayCommand<Object>(p => true, p =>
-        //    {
-        //        Member o = p as Member;
-        //        if (o != null)
-        //        {
-        //            memberDao.delete(o);
-        //            loadMemberList();
-        //        }
-        //        else return;
-        //    });
-        //}
-        //public void loadMemberList()
-        //{
-        //    memberList.Clear();
-        //    List<Member> members = memberDao.getAll();
-        //    foreach (Member member in members)
-        //        memberList.Add(member);
-        //}
 
     }
 }

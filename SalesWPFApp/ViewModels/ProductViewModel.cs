@@ -56,11 +56,14 @@ namespace SalesWPFApp.ViewModels
 
 
         public ICommand AddCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+
 
         public ProductViewModel()
         {
             LoadProductList();
 
+            // Add item
             AddCommand = new RelayCommand<object>((p) => {
                 if (string.IsNullOrEmpty(ProductName) || CategoryId == null || string.IsNullOrEmpty(Weight) || UnitPrice == null || UnitStock == null)
                 {
@@ -77,6 +80,22 @@ namespace SalesWPFApp.ViewModels
             }, (p) => {
                 _ProductRepository.Create(new Product { ProductName = ProductName, CategoryId = CategoryId, Weight=Weight,UnitPrice = UnitPrice, UnitStock = UnitStock});
                 MessageBox.Show($"Product: {ProductName} is created successfully", "Add Product");
+                LoadProductList();
+            });
+
+
+            // Edit item
+            EditCommand = new RelayCommand<object>((p) => {
+                if (SelectedProduct == null || string.IsNullOrEmpty(ProductName) || CategoryId == null || string.IsNullOrEmpty(Weight) || UnitPrice == null || UnitStock == null)
+                {
+                    //MessageBox.Show("Please complete all field data!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+                return true;
+
+            }, (p) => {
+                _ProductRepository.Update(SelectedProduct.ProductId, (new Product { ProductName = ProductName, CategoryId = CategoryId, Weight = Weight, UnitPrice = UnitPrice, UnitStock = UnitStock }));
+                MessageBox.Show($"Product: {ProductName} is Updated successfully", "Update Product");
                 LoadProductList();
             });
         }
