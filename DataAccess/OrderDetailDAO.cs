@@ -10,33 +10,17 @@ namespace DataAccess
 {
     public class OrderDetailDAO
     {
-        IOrderRepository orderRepository;
+        private Asm1PRNContext _Context;
 
-        public OrderDetailDAO(IOrderRepository orderRepository)
+        public OrderDetailDAO()
         {
-            this.orderRepository = orderRepository;
+            _Context = DataProvider.Ins.DB;
         }
 
-        // > 0 asc ; < 0 desc
-        public List<OrderDetail> reportSalesByDate(DateTime startDate, DateTime endDate, int orderBy)
+        public List<OrderDetail> getAll()
         {
-            return null;
+            return _Context.OrderDetails.ToList();
         }
-        public int delete(Order order)
-        {
-            return orderRepository.Delete(order);
-        }
-        public int update(int id, Order order)
-        {
-            return orderRepository.Update(id,order);
-        }
-        public List<Order> getAll()
-        {
-            return orderRepository.ReadAll();
-        }
-        public int add(Order order)
-        {
-            return orderRepository.Create(order);   
-        }
+
     }
 }

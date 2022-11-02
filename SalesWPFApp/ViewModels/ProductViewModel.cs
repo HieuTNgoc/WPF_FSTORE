@@ -54,10 +54,14 @@ namespace SalesWPFApp.ViewModels
         private int _UnitStock;
         public int UnitStock { get => _UnitStock; set { _UnitStock = value; OnPropertyChanged(); } }
 
+        private string _Key;
+        public string Key { get => _Key; set { _Key = value; OnPropertyChanged(); } }
+
 
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
 
 
 
@@ -112,6 +116,17 @@ namespace SalesWPFApp.ViewModels
                 _ProductRepository.Remove(SelectedProduct.ProductId);
                 MessageBox.Show($"Account: {ProductName} is Removed successfully", "Remove Member");
                 LoadProductList();
+            });
+
+            // Search item
+            SearchCommand = new RelayCommand<object>((p) => {
+                if (Key == null)
+                {
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                ProductList = _ProductRepository.ReadKey(Key);
             });
         }
 

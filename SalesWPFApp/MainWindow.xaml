@@ -18,7 +18,7 @@
          FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Sale Home App" Height="550" Width="850">
+        Title="Sale Home App" Height="570" Width="850">
 
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
@@ -30,13 +30,28 @@
 
     <Grid Margin="0,0,0,-76">
         <TextBlock FontSize="25px" Margin="50px" FontWeight="Bold">WELLCOME:</TextBlock>
-        <TextBlock FontSize="20px" Margin="100px" FontWeight="Bold">Member: email address</TextBlock>
+        <TextBlock FontSize="20px" Margin="80,118,120,82" FontWeight="Bold">Account:</TextBlock>
+        <TextBlock FontSize="20px" Margin="210,118,90,82" FontWeight="Bold" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">App Admin</TextBlock>
+        <Grid Margin="80,137,-80,-137">
+            <Label Content="Company Name" Margin="0,50,0,-89" />
+            <Label Content="City" Margin="0,130,0,-153" />
+            <Label Content="Country" Margin="0,208,0,-253" />
+
+            <TextBlock FontSize="20px" Text="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="130,46,90,154" ></TextBlock>
+            <TextBox Name="companyName" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,43,0,0" />
+            <TextBlock FontSize="20px"  Text="{Binding City, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="130,115,90,115" ></TextBlock>
+            <TextBox Name="city" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,115,0,0"/>
+            <TextBlock FontSize="20px"  Text="{Binding Country, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="130,192,90,108" ></TextBlock>
+            <TextBox Name="country" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,192,0,0" />
+
+        </Grid>
+
         <Button
             Command="{Binding AccountCommand}"
             CommandParameter="{Binding ElementName=mainWindow}"
             Style="{StaticResource MaterialDesignRaisedLightButton}"
             Width="250"
-            ToolTip="Resource name: MaterialDesignRaisedLightButton" Margin="430,132,120,346" >
+            ToolTip="Resource name: MaterialDesignRaisedLightButton" Margin="480,132,120,346" >
             Account Management
         </Button>
         <Button
@@ -44,7 +59,7 @@
             CommandParameter="{Binding ElementName=mainWindow}"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
             Width="250"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" RenderTransformOrigin="0.84,-0.531" Margin="430,199,120,279" >
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" RenderTransformOrigin="0.84,-0.531" Margin="480,254,120,324" >
             Product Management
         </Button>
         <Button
@@ -52,7 +67,7 @@
             CommandParameter="{Binding ElementName=mainWindow}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             Width="250"
-            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Margin="430,277,120,201">
+            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Margin="480,277,120,201">
             Order
         </Button>
     </Grid>

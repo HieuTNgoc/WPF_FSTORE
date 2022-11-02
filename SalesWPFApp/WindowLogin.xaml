@@ -18,10 +18,11 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Login" Height="550" Width="500">
-    
-    
-    
+
+
+
     <Grid >
+        <TextBlock HorizontalAlignment="Center"  FontSize="25px" Margin="0,90,0,10" FontWeight="Bold">LOGIN</TextBlock>
         <materialDesign:Card Width="400" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid>
                 <Grid.Resources>
@@ -84,7 +85,7 @@
                 </Grid>
             </Grid>
         </materialDesign:Card>
-        
+
 
     </Grid>
 </Window>

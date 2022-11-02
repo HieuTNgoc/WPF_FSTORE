@@ -40,5 +40,10 @@ namespace DataAccess.Repository
         {
            _ProductDAO.delete(productId);
         }
+
+        public List<Product> ReadKey(string key)
+        {
+            return _ProductDAO.getAllKey(key);
+        }
     }
 }

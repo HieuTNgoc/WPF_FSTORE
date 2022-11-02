@@ -49,10 +49,14 @@ namespace SalesWPFApp.ViewModels
 
         private string _Password;
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+        private string _Key;
+        public string Key { get => _Key; set { _Key = value; OnPropertyChanged(); } }
 
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
+
 
 
 
@@ -114,12 +118,25 @@ namespace SalesWPFApp.ViewModels
                 LoadMemberList();
             });
 
+
+
+            // Search item
+            SearchCommand = new RelayCommand<object>((p) => {
+                if (Key == null)
+                {
+                    return false;
+                }
+                return true;
+            }, (p) => {
+                MemberList = _MemberRepository.ReadKey(Key);
+            });
         }
        
         void LoadMemberList()
         {
             MemberList = _MemberRepository.ReadAll();
         }
+
 
     }
 }

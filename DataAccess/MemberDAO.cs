@@ -36,12 +36,21 @@ namespace DataAccess
         public List<Member> getAll()
         {
             return _Context.Members.ToList();
-
         }
 
+        public List<Member> getAllKey(string key)
+        {
+            return _Context.Members.Where(x=> x.Email.Contains(key)).ToList();
+
+        }
         public Member getById(int memberId)
         {
             return _Context.Members.Where(x => x.MemberId == memberId).SingleOrDefault();
+        }
+
+        public Member getByEmail(string email)
+        {
+            return _Context.Members.Where(x=> x.Email == email).SingleOrDefault();  
         }
 
         public void addNew(Member member)

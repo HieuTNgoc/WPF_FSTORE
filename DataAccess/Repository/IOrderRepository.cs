@@ -9,9 +9,9 @@ namespace DataAccess.Repository
 {
     public interface IOrderRepository
     {
-        public int Create(Order member);
-        public int Update(int OrderId, Order order);
-        public int Delete(Order member);
         public List<Order> ReadAll();
+        //public int Create(Order member);
+        //public int Update(int OrderId, Order order);
+        //public int Delete(Order member);
     }
 }

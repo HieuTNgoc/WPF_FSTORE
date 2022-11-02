@@ -22,6 +22,10 @@ namespace DataAccess
             return _Context.Products.ToList();
         }
 
+        public List<Product> getAllKey(string key)
+        {
+            return _Context.Products.Where(x=> x.ProductName.Contains(key)).ToList();
+        }
         public int countProduct(string productName)
         {
             return _Context.Products.Where(x => x.ProductName == productName).Count();

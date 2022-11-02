@@ -11,12 +11,25 @@ namespace SalesWPFApp.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public int UserRole { get;set;}
+        public int UserRole { get; set; }
+
+        private string _Email;
+        public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
+
+        private string _CompanyName;
+        public string CompanyName { get => _CompanyName; set { _CompanyName = value; OnPropertyChanged(); } }
+
+        private string _City;
+        public string City { get => _City; set { _City = value; OnPropertyChanged(); } }
+
+        private string _Country;
+        public string Country { get => _Country; set { _Country = value; OnPropertyChanged(); } }
+
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand AccountCommand { get; set; }
         public ICommand ProductCommand { get; set; }
         public ICommand OrderCommand { get; set; }
-        
+
 
         public MainViewModel()
         {
@@ -39,6 +52,13 @@ namespace SalesWPFApp.ViewModels
                 if (loginVM.IsLogin)
                 {
                     UserRole = loginVM.UserRole;
+                    if (loginVM.member != null)
+                    {
+                        Email = loginVM.member.Email;
+                        City = loginVM.member.City;
+                        Country = loginVM.member.Country;
+                        CompanyName = loginVM.member.CompanyName;
+                    }
                     p.Show();
                 }
                 else
@@ -46,15 +66,17 @@ namespace SalesWPFApp.ViewModels
                     p.Close();
                 }
             });
-            AccountCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            AccountCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
                 if (UserRole < 2)
                 {
                     MessageBox.Show("You do not have permissions!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                WindowMembers wd = new WindowMembers(); wd.ShowDialog(); 
+                WindowMembers wd = new WindowMembers(); wd.ShowDialog();
             });
-            ProductCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+            ProductCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
                 if (UserRole < 2)
                 {
                     MessageBox.Show("You do not have permissions!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);

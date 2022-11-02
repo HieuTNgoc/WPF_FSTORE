@@ -40,7 +40,7 @@
                 </DataGrid>
             </materialDesign:Card>
         </Grid>
-        <Grid Margin="810,58,-125,37"> 
+        <Grid Margin="810,118,-125,-23"> 
             <Label Content="Product Name" Margin="0,30,0,-31" />
             <Label Content="CategoryId" Margin="0,80,0,-89" />
             <Label Content="Weight" Margin="0,130,0,-153" />
@@ -57,5 +57,43 @@
             <TextBox Name="unitStock" Height="33" Width="195"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,225,0,0"
                      Text="{Binding  UnitStock, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </Grid>
+
+        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16" Height="73" Margin="792,26,28,0">
+            <DockPanel Margin="0,0,0,0">
+                <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True" Width="474">
+                    <materialDesign:ColorZone
+                            Mode="Standard"
+                            Padding="8 4 8 4"
+                            CornerRadius="2"
+                            Panel.ZIndex="1"
+                            Margin="0 0 0 0"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1" Width="272">
+                        <Grid Width="277">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon Kind="Magnify"  Opacity=".56" />
+                            </Button>
+                            <TextBox
+                                Text="{Binding Key, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                Grid.Column="1"
+                                Margin="8 0 0 0"
+                                materialDesign:HintAssist.Hint="Search by Product Name"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0"
+                                MinWidth="200"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <Button  Style="{DynamicResource MaterialDesignToolForegroundButton}" Margin="8 0 0 0" Panel.ZIndex="0"
+                             Command="{Binding SearchCommand}">
+                        <materialDesign:PackIcon Kind="Send" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
     </Grid>
 </Window>

@@ -9,43 +9,16 @@ namespace DataAccess.Repository
 {
     public class OrderDetailRepository : IOrderDetailRepository
     {
-        private Asm1PRNContext _context;
+        private OrderDetailDAO _OrderDetailDAO;
 
-        public OrderDetailRepository(Asm1PRNContext context)
+        public OrderDetailRepository()
         {
-            _context = context;
-        }
-
-        public int Create(OrderDetail OrderDetail)
-        {
-            _context.Add(OrderDetail);
-            return _context.SaveChanges();
-        }
-
-        public int Delete(OrderDetail OrderDetail)
-        {
-            _context.Remove(OrderDetail);
-            return _context.SaveChanges();
+            _OrderDetailDAO = new OrderDetailDAO();
         }
 
         public List<OrderDetail> ReadAll()
         {
-            return _context.OrderDetails.ToList();
+            return _OrderDetailDAO.getAll();
         }
-
-        public int ReadAll(OrderDetail member)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(int OrderId, int ProductId, OrderDetail OrderDetail)
-        {
-            OrderDetail.ProductId = ProductId;
-            OrderDetail.OrderId = OrderId;
-            _context.Update(OrderDetail);
-            return _context.SaveChanges();
-        }
-
-    
     }
 }

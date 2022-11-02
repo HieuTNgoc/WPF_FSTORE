@@ -53,5 +53,14 @@ namespace DataAccess.Repository
             _MemberDAO.delete(memberId);
         }
 
+        public Member GetByEmail(string email)
+        {
+            return _MemberDAO.getByEmail(email);
+        }
+
+        public List<Member> ReadKey(string key)
+        {
+            return _MemberDAO.getAllKey(key);
+        }
     }
 }

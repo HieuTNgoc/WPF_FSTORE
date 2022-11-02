@@ -18,6 +18,8 @@ namespace SalesWPFApp.ViewModels
     {
         public bool IsLogin { get; set; }
         public int UserRole { get; set; }
+        public Member member { get; set; }
+
         private IMemberRepository _MemberRepository = new MemberRepository();
         private string _Email;
         public string Email { get => _Email; set{ _Email = value; OnPropertyChanged(); } }
@@ -58,6 +60,7 @@ namespace SalesWPFApp.ViewModels
             }
             else if (accCount >0)
             {
+                member = _MemberRepository.GetByEmail(Email);
                 IsLogin = true;
                 UserRole = 1;
                 p.Close();
