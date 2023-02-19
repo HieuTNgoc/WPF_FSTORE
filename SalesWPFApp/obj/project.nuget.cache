@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SWboDtBzZ8aRDKM/3SG+5oCR7Mbtg+dFkVpAR53fnvM4BhDh1GaxUbnhtsZurDLr/Ob3+6YRv0Bo8hStsEWWvw==",
+  "dgSpecHash": "9NTPU/nEBObSgFueoVvRJhTYlFE2CvVF02gS59sKPiYxkPUEGoFU/TBv1VWqcwCGrK59OTdavtvESfdpsJm9vw==",
   "success": true,
-  "projectFilePath": "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\SalesWPFApp\\SalesWPFApp.csproj",
+  "projectFilePath": "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\SalesWPFApp\\SalesWPFApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512",

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\FPT-WorkSpace\PRN221\Asm01Solution\SalesWPFApp\obj\Debug\net6.0-windows\
+E:\Users\Admin\Downloads\PRN221_Re\Project\WPF_FSTORE\SalesWPFApp\obj\Debug\net6.0-windows\
 SalesWPFApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\FPT-WorkSpace\PRN221\Asm01Solution\SalesWPFApp\App.xaml
+E:\Users\Admin\Downloads\PRN221_Re\Project\WPF_FSTORE\SalesWPFApp\App.xaml
 6-298443215
 
 13-1499733880
-225-1819428568
+225-1714592831
 MainWindow.xaml;ResourceXAML\MainResource.xaml;WindowLogin.xaml;WindowMembers.xaml;WindowOrders.xaml;WindowProducts.xaml;
 
 False

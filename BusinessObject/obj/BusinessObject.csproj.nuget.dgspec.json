@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\BusinessObject\\BusinessObject.csproj": {}
+    "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\BusinessObject\\BusinessObject.csproj": {}
   },
   "projects": {
-    "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\BusinessObject\\BusinessObject.csproj": {
+    "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\BusinessObject\\BusinessObject.csproj",
+        "projectPath": "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\BusinessObject\\BusinessObject.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT-WorkSpace\\PRN221\\Asm01Solution\\BusinessObject\\obj\\",
+        "outputPath": "E:\\Users\\Admin\\Downloads\\PRN221_Re\\Project\\WPF_FSTORE\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +69,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -74,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

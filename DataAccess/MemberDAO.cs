@@ -24,7 +24,7 @@ namespace DataAccess
 
         public int countAcc(string email, string password)
         {
-            if (email == _AdminEmail && password == _AdminPassword) return -1;
+            if (email.Equals(_AdminEmail) && password.Equals(_AdminPassword)) return -1;
             return _Context.Members.Where(x => x.Email == email && x.Password == password).Count();
         }
 
